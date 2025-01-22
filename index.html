@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      ul {
+        list-style-type: none;
+      }
+      li {
+        margin: 10px 0;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+      }
+      .active {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Task Manager</h1>
+    <ul id="task-list"></ul>
+    <input type="text" id="new-task" placeholder="New Task" />
+    <button onclick="addTask()">Add Task</button>
+    <div>Time: <span id="timer">0</span></div>
+    <button id="start-timer" onclick="onStartTimer()">Start</button>
+    <button id="stop-timer" onClick="onStopTimer()">Stop</button>
+    <table id="data-table" border="1">
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+      </tr>
+    </table>
+    <button id="add-row" onclick="addRow()">Add Row</button>
+    <div id="text-box">Hello, World!</div>
+    <button id="change-text" onclick="changeText()">Change Text</button>
+    <ul id="item-list">
+      <li>Item 1</li>
+      <li>Item 2</li>
+    </ul>
+    <button id="add-item" onclick="addItem()">Add Item</button>
+    <div id="color-box" style="width: 200px; height: 200px; background-color: red"></div>
+    <button id="toggle-color" onclick="toggleClick()">Toggle Color</button>
+    <input id="name-input" type="text" placeholder="Enter your name" />
+    <button id="submit-name" onclick="onSubmit()">Submit</button>
+    <div id="greeting"></div>
+    <ul id="delete-list">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+    <button id="delete-item" onclick="onDeleteLastItem()">Delete Last Item</button>
+    <div>Count: <span id="count">0</span></div>
+    <button id="increment" onclick="onIncrement()">Increment</button>
+    <div id="hover-box">Hover over me!</div>
+    <div id="class-box" class="box"></div>
+    <button id="toggle-class" onclick="onToggleClass()">Toggle Class</button>
+    <script src="app.js"></script>
+  </body>
+</html>
