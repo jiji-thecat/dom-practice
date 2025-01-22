@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      ul {
+        list-style-type: none;
+      }
+      li {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="magic-button">Hover or Click me!</button>
+    <p id="text">Double-click me to change this text!</p>
+    <input type="text" id="text-input" placeholder="Type something here..." />
+    <div id="output"></div>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Enter username" required />
+      <button type="submit">Submit</button>
+    </form>
+    <div id="box" style="width: 200px; height: 200px; background-color: lightblue"></div>
+    <div id="tracking-area" style="width: 300px; height: 300px; background-color: lightgray">Move your mouse here!</div>
+    <p id="coordinates">Coordinates: (0, 0)</p>
+    <script src="eventListener.js"></script>
+  </body>
+</html>
