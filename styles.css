@@ -1,0 +1,12 @@
+body {
+  font-family: Arial, sans-serif;
+}
+ul {
+  list-style-type: none;
+}
+li {
+  margin: 10px 0;
+}
+tr {
+  height: 30px;
+}

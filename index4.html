@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Table</title>
+  </head>
+  <body>
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Priority</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Complete Project</td>
+          <td>High</td>
+          <td>In Progress</td>
+        </tr>
+        <tr>
+          <td>Fix Bug</td>
+          <td>High</td>
+          <td>New</td>
+        </tr>
+        <tr>
+          <td>Discuss wit PM</td>
+          <td>Mid</td>
+          <td>Done</td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="add-row" onclick="addRow()">Add Row</button>
+    <div id="test-div"></div>
+
+    <script src="table.js"></script>
+  </body>
+</html>
