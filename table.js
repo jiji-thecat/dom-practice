@@ -39,9 +39,69 @@ Create a small interactive table with basic features using **Vanilla JS**, **DOM
 - Clean and readable code.  
 - Responsive and functional UI interactions.   */
 
-const deleteRow = (tdId) => {
-  const elem = document.getElementById(tdId);
+const deleteRow = (trId) => {
+  const elem = document.getElementById(trId);
   elem.remove();
+  updateButtons();
+};
+
+const updateButtons = () => {
+  const rows = document.querySelectorAll('table tr');
+  rows.forEach((v, i) => {
+    if (i !== 0) {
+      // tr配下にあるbuttonをnodeList[3]=[moveup, movedown, delete]で受け取ることができる
+      const upButton = v.querySelectorAll('button')[0];
+      const downButton = v.querySelectorAll('button')[1];
+
+      // Disable logic
+      upButton.disabled = i === 1;
+      downButton.disabled = i === rows.length - 1;
+    }
+  });
+};
+
+const moveUp = (trId) => {
+  const row = document.getElementById(trId);
+  // trの1個前のtrにアクセスする。
+  const preRow = row.previousElementSibling;
+
+  if (preRow) {
+    row.parentNode.insertBefore(row, preRow);
+    updateButtons();
+  }
+};
+
+const moveDown = (trId) => {
+  const row = document.getElementById(trId);
+  // trの1個あとのtrにアクセスする
+  const nextRow = row.nextElementSibling;
+
+  if (nextRow) {
+    row.parentNode.insertBefore(nextRow, row);
+    updateButtons();
+  }
+};
+
+addMoveDownButton = (tr) => {
+  const button = document.createElement('button');
+  const td = document.createElement('td');
+  button.innerText = 'Move Down';
+  button.className = 'button-move-down';
+  button.onclick = () => moveDown(tr.id);
+
+  td.append(button);
+  tr.append(td);
+};
+
+addMoveUpButton = (tr) => {
+  const button = document.createElement('button');
+  const td = document.createElement('td');
+  button.innerText = 'Move Up';
+  button.className = 'button-move-up';
+  button.onclick = () => moveUp(tr.id);
+
+  td.append(button);
+  tr.append(td);
 };
 
 const addDeleteButton = (tr) => {
@@ -60,22 +120,15 @@ const addId = (tr) => {
 };
 
 const addEditable = (tr) => {
+  // tr配下のtdのそれぞれにアクセスする
   Array.from(tr.children).forEach((v) => {
     v.contentEditable = true;
   });
 };
 
-const tr = document.querySelectorAll('table tr');
-Array.from(tr).forEach((v, i) => {
-  if (i !== 0) {
-    addId(v);
-    addDeleteButton(v);
-    addEditable(v);
-  }
-});
-
 const addRow = () => {
   const table = document.getElementById('data-table');
+  // -1はtableの一番下にinsert, 1はtableのheader下からinsert
   const newTr = table.insertRow(-1);
 
   const newCell = newTr.insertCell(0);
@@ -83,6 +136,23 @@ const addRow = () => {
   const newCell3 = newTr.insertCell(2);
 
   addId(newTr);
+  addMoveUpButton(newTr);
+  addMoveDownButton(newTr);
   addDeleteButton(newTr);
-  addEditable(newTr);
+  updateButtons();
+
+  // addEditable(newTr);
 };
+
+const tr = document.querySelectorAll('table tr');
+Array.from(tr).forEach((v, i) => {
+  if (i !== 0) {
+    addId(v);
+    addMoveUpButton(v);
+    addMoveDownButton(v);
+    addDeleteButton(v);
+
+    // addEditable(v);
+  }
+});
+updateButtons();
